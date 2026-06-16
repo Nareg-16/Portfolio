@@ -157,6 +157,41 @@
     html{scroll-behavior:auto;}
   }
   :focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:3px;}
+
+  /* ---- responsive: tablet & small ---- */
+  @media(max-width:760px){
+    .wrap{padding:0 22px;}
+    .hero{padding:60px 0 48px;}
+    section.block{padding:38px 0;}
+    .sec-head{margin-bottom:26px;}
+    .card{padding:22px 20px 20px;}
+  }
+  /* ---- responsive: phones ---- */
+  @media(max-width:560px){
+    body{font-size:16px;}
+    .wrap{padding:0 18px;}
+    .nav-inner{height:56px;}
+    .hero{padding:46px 0 40px;}
+    h1{font-size:clamp(36px,11vw,52px);}
+    .lead{font-size:17px;}
+    .manifest{gap:8px;margin-bottom:28px;}
+    .hero-cta{gap:10px;}
+    .btn{flex:1 1 46%;text-align:center;padding:13px 12px;}
+    .card-media{height:148px;}
+    .card-top{gap:8px;}
+    .card h3{font-size:19px;}
+    .status{font-size:11px;}
+    .card p{font-size:15px;}
+    .contact-card{flex-basis:100%;padding:20px;}
+  }
+  /* ---- responsive: very small phones ---- */
+  @media(max-width:380px){
+    .wrap{padding:0 15px;}
+    h1{font-size:32px;line-height:1.05;}
+    .card-media .wm{font-size:17px;}
+    .card-media .mono-url{font-size:10.5px;}
+    .btn{flex:1 1 100%;}
+  }
 </style>
 </head>
 <body>
