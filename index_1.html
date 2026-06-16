@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Nareg Marashlian — Web &amp; AI Application Developer</title>
+<meta name="description" content="Nareg Marashlian — IT engineer in Yerevan building web and AI applications. Real, deployed projects you can open and use." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --bg:#F4F5F7;
+    --surface:#FFFFFF;
+    --ink:#15171A;
+    --muted:#646A73;
+    --hairline:#E5E7EC;
+    --accent:#2546E5;
+    --accent-soft:#EAEDFD;
+    --live:#14A05A;
+    --display:'Space Grotesk',system-ui,sans-serif;
+    --body:'Inter',system-ui,sans-serif;
+    --mono:'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
+    --maxw:1080px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;background:var(--bg);color:var(--ink);
+    font-family:var(--body);font-size:17px;line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;text-decoration:none;}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px;}
+
+  /* ---- nav ---- */
+  header.nav{
+    position:sticky;top:0;z-index:50;
+    background:rgba(244,245,247,.82);backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--hairline);
+  }
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;height:62px;}
+  .brand{font-family:var(--mono);font-weight:500;font-size:14px;letter-spacing:.02em;}
+  .brand b{color:var(--accent);}
+  .nav-links{display:flex;gap:26px;align-items:center;font-family:var(--mono);font-size:13px;}
+  .nav-links a{color:var(--muted);transition:color .15s;}
+  .nav-links a:hover{color:var(--ink);}
+  .nav-links a.gh{color:var(--ink);border:1px solid var(--hairline);padding:6px 12px;border-radius:7px;}
+  .nav-links a.gh:hover{border-color:var(--accent);color:var(--accent);}
+  @media(max-width:620px){.nav-links a:not(.gh){display:none;}}
+
+  /* ---- hero ---- */
+  .hero{padding:84px 0 64px;}
+  .eyebrow{font-family:var(--mono);font-size:13px;color:var(--muted);letter-spacing:.04em;margin-bottom:22px;}
+  .eyebrow .dot{color:var(--accent);}
+  h1{
+    font-family:var(--display);font-weight:700;letter-spacing:-.02em;
+    font-size:clamp(40px,7vw,76px);line-height:1.02;margin:0 0 22px;
+  }
+  .lead{font-size:clamp(18px,2.4vw,22px);max-width:30em;color:#2c2f34;margin:0 0 30px;}
+  .lead b{font-weight:600;}
+  .manifest{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:34px;}
+  .chip{
+    font-family:var(--mono);font-size:12.5px;color:var(--muted);
+    border:1px solid var(--hairline);background:var(--surface);
+    padding:7px 12px;border-radius:999px;
+  }
+  .chip b{color:var(--ink);font-weight:500;}
+  .hero-cta{display:flex;gap:14px;flex-wrap:wrap;}
+  .btn{
+    font-family:var(--mono);font-size:14px;padding:12px 20px;border-radius:9px;
+    border:1px solid var(--ink);transition:all .16s;cursor:pointer;
+  }
+  .btn.primary{background:var(--ink);color:#fff;border-color:var(--ink);}
+  .btn.primary:hover{background:var(--accent);border-color:var(--accent);}
+  .btn.ghost:hover{border-color:var(--accent);color:var(--accent);}
+
+  /* ---- section scaffolding ---- */
+  section.block{padding:46px 0;border-top:1px solid var(--hairline);}
+  .sec-head{display:flex;align-items:baseline;gap:14px;margin-bottom:34px;}
+  .sec-idx{font-family:var(--mono);font-size:13px;color:var(--accent);}
+  .sec-title{font-family:var(--display);font-weight:600;font-size:clamp(22px,3vw,30px);letter-spacing:-.01em;}
+
+  /* ---- work / cards ---- */
+  .cards{display:grid;gap:18px;}
+  .card{
+    background:var(--surface);border:1px solid var(--hairline);border-radius:14px;
+    padding:26px 26px 22px;transition:border-color .18s, transform .18s;
+  }
+  .card:hover{border-color:#c9cdd6;transform:translateY(-2px);}
+  .card-top{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap;}
+  .card h3{font-family:var(--display);font-weight:600;font-size:21px;margin:0;letter-spacing:-.01em;}
+  .status{font-family:var(--mono);font-size:12px;display:inline-flex;align-items:center;gap:7px;white-space:nowrap;color:var(--muted);}
+  .status .led{width:8px;height:8px;border-radius:50%;background:var(--live);box-shadow:0 0 0 3px rgba(20,160,90,.16);}
+  .status.live .led{animation:pulse 2.2s ease-in-out infinite;}
+  .status.off .led{background:#c2c6cd;box-shadow:none;}
+  @keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(20,160,90,.28);}50%{box-shadow:0 0 0 5px rgba(20,160,90,0);}}
+  .tags{font-family:var(--mono);font-size:12.5px;color:var(--accent);margin:13px 0 14px;}
+  .tags span{color:var(--muted);}
+  .card p{margin:0 0 18px;color:#33363b;font-size:15.5px;line-height:1.62;}
+  .card-links{display:flex;gap:18px;font-family:var(--mono);font-size:13.5px;}
+  .card-links a{color:var(--ink);border-bottom:1px solid var(--accent);padding-bottom:1px;transition:color .15s;}
+  .card-links a:hover{color:var(--accent);}
+  .card-links a.muted{color:var(--muted);border-bottom-color:var(--hairline);}
+
+  /* ---- preview tiles ---- */
+  .card-media{
+    height:172px;border-radius:10px;overflow:hidden;position:relative;
+    margin-bottom:20px;border:1px solid rgba(0,0,0,.06);
+    display:flex;flex-direction:column;justify-content:flex-end;padding:14px;
+  }
+  .card-media .mono-url{
+    font-family:var(--mono);font-size:11.5px;color:#15171A;
+    background:rgba(255,255,255,.9);padding:5px 11px;border-radius:999px;
+    align-self:flex-start;
+  }
+  .card-media .wm{position:absolute;top:13px;right:17px;font-family:var(--display);font-weight:700;font-size:20px;opacity:.55;color:#15171A;}
+  .card-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
+  .m-closer{background:linear-gradient(135deg,#f6dbe8 0%,#e7d6f1 55%,#f7eef3 100%);}
+  .m-fa7s{background:linear-gradient(135deg,#d6efe2 0%,#cfe4f4 100%);}
+  .m-npua{background:linear-gradient(135deg,#dae3f6 0%,#eaf0fc 100%);}
+  .m-ledger{background:linear-gradient(135deg,#1e2a31 0%,#2b3d43 100%);}
+  .m-ledger .wm{color:#bfe6d6;}
+
+  /* ---- skills ---- */
+  .skills{display:grid;gap:0;border:1px solid var(--hairline);border-radius:14px;overflow:hidden;background:var(--surface);}
+  .skill-row{display:grid;grid-template-columns:200px 1fr;gap:18px;padding:18px 24px;border-bottom:1px solid var(--hairline);}
+  .skill-row:last-child{border-bottom:none;}
+  .skill-label{font-family:var(--mono);font-size:13px;color:var(--accent);padding-top:2px;}
+  .skill-items{font-family:var(--mono);font-size:14px;color:#2c2f34;line-height:1.9;}
+  @media(max-width:600px){.skill-row{grid-template-columns:1fr;gap:6px;}}
+
+  /* ---- contact ---- */
+  .contact-grid{display:flex;flex-wrap:wrap;gap:14px;}
+  .contact-card{
+    flex:1 1 240px;background:var(--surface);border:1px solid var(--hairline);
+    border-radius:14px;padding:24px;transition:border-color .18s,transform .18s;
+  }
+  .contact-card:hover{border-color:var(--accent);transform:translateY(-2px);}
+  .contact-card .k{font-family:var(--mono);font-size:12px;color:var(--muted);margin-bottom:8px;}
+  .contact-card .v{font-family:var(--display);font-weight:600;font-size:19px;word-break:break-all;}
+  .nowline{font-family:var(--mono);font-size:13.5px;color:var(--muted);margin-top:30px;}
+  .nowline b{color:var(--ink);font-weight:500;}
+
+  footer{border-top:1px solid var(--hairline);padding:30px 0;font-family:var(--mono);font-size:12.5px;color:var(--muted);}
+  .foot-inner{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;}
+
+  /* reveal */
+  .reveal{opacity:0;transform:translateY(16px);transition:opacity .6s ease, transform .6s ease;}
+  .reveal.in{opacity:1;transform:none;}
+  @media(prefers-reduced-motion:reduce){
+    .reveal{opacity:1;transform:none;transition:none;}
+    .status.live .led{animation:none;}
+    html{scroll-behavior:auto;}
+  }
+  :focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:3px;}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="#top">NAREG<b>.</b>M</a>
+    <nav class="nav-links">
+      <a href="#work">work</a>
+      <a href="#skills">skills</a>
+      <a href="#contact">contact</a>
+      <a class="gh" href="https://github.com/Nareg-16" target="_blank" rel="noopener">GitHub ↗</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero wrap">
+    <div class="eyebrow reveal"><span class="dot">●</span> Yerevan, Armenia &nbsp;·&nbsp; IT engineer &nbsp;·&nbsp; trilingual (EN / HY / AR)</div>
+    <h1 class="reveal">Nareg<br>Marashlian</h1>
+    <p class="lead reveal">I build <b>web &amp; AI applications</b> — and ship them. Everything below is a real project you can open and use right now, not a mockup.</p>
+    <div class="manifest reveal">
+      <span class="chip"><b>4</b> projects</span>
+      <span class="chip"><b>3</b> live &amp; deployed</span>
+      <span class="chip">Laravel · Next.js · Python</span>
+      <span class="chip">B.Eng. IT, 2026</span>
+    </div>
+    <div class="hero-cta reveal">
+      <a class="btn primary" href="#work">See the work ↓</a>
+      <a class="btn ghost" href="mailto:nareg.marash@gmail.com">Email me</a>
+    </div>
+  </section>
+
+  <section class="block" id="work">
+    <div class="wrap">
+      <div class="sec-head reveal"><span class="sec-idx">01</span><span class="sec-title">Work</span></div>
+      <div class="cards">
+
+        <article class="card reveal">
+          <div class="card-media m-closer"><span class="wm">Closer</span><span class="mono-url">closer-roan.vercel.app</span></div>
+          <div class="card-top">
+            <h3>Closer</h3>
+            <span class="status live"><span class="led"></span>in development · live on Vercel</span>
+          </div>
+          <div class="tags">Next.js 16 <span>·</span> React 19 <span>·</span> TypeScript <span>·</span> Supabase <span>·</span> LLM</div>
+          <p>One shared activity for two people who are apart — chosen to fit the moment, with the steps and a message ready to send. Full-stack on Supabase with couple pairing, row-level security, and rate-limiting; suggestions are generated with an LLM.</p>
+          <div class="card-links">
+            <a href="https://closer-roan.vercel.app/" target="_blank" rel="noopener">Open live ↗</a>
+          </div>
+        </article>
+
+        <article class="card reveal">
+          <div class="card-media m-fa7s"><span class="wm">فاحص</span><span class="mono-url">fa7s-swa2a.netlify.app</span></div>
+          <div class="card-top">
+            <h3>Fa7s &nbsp;·&nbsp; فاحص</h3>
+            <span class="status live"><span class="led"></span>live on Netlify</span>
+          </div>
+          <div class="tags">JavaScript <span>·</span> PWA <span>·</span> Python <span>·</span> LLM pipeline</div>
+          <p>Study for the Arabic driving-theory exam: chapters, a mock exam, and a saved-mistakes mode — installable and works offline. I wrote a Python + LLM pipeline that extracted the whole question bank from the official PDF, linking each question to its image.</p>
+          <div class="card-links">
+            <a href="https://fa7s-swa2a.netlify.app/" target="_blank" rel="noopener">Open live ↗</a>
+          </div>
+        </article>
+
+        <article class="card reveal">
+          <div class="card-media m-npua"><span class="wm">NPUA</span><span class="mono-url">diploma project · demo on request</span></div>
+          <div class="card-top">
+            <h3>NPUA Admissions &amp; Student Portal</h3>
+            <span class="status off"><span class="led"></span>diploma project · demo on request</span>
+          </div>
+          <div class="tags">Laravel 12 <span>·</span> MySQL <span>·</span> Blade</div>
+          <p>My engineering diploma project: a full university system from application to enrollment — a multi-step applicant wizard with document uploads, an admin review-and-approval workflow, and student grades and scheduling, in English, Russian, and Armenian.</p>
+          <div class="card-links">
+            <a class="muted" href="https://github.com/Nareg-16" target="_blank" rel="noopener">Source on GitHub ↗</a>
+          </div>
+        </article>
+
+        <article class="card reveal">
+          <div class="card-media m-ledger"><span class="wm">Ledger</span><span class="mono-url">the-ledgerbynar.netlify.app</span></div>
+          <div class="card-top">
+            <h3>The Ledger</h3>
+            <span class="status live"><span class="led"></span>live on Netlify</span>
+          </div>
+          <div class="tags">JavaScript <span>·</span> HTML <span>·</span> CSS</div>
+          <p>A clean, mobile-first way to track income and expenses — no spreadsheet required.</p>
+          <div class="card-links">
+            <a href="https://the-ledgerbynar.netlify.app/" target="_blank" rel="noopener">Open live ↗</a>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="skills">
+    <div class="wrap">
+      <div class="sec-head reveal"><span class="sec-idx">02</span><span class="sec-title">Skills</span></div>
+      <div class="skills reveal">
+        <div class="skill-row">
+          <div class="skill-label">most comfortable</div>
+          <div class="skill-items">PHP · Laravel · MySQL · HTML · CSS · Git &amp; GitHub</div>
+        </div>
+        <div class="skill-row">
+          <div class="skill-label">working knowledge</div>
+          <div class="skill-items">JavaScript · TypeScript · React / Next.js · Supabase · Node.js · REST</div>
+        </div>
+        <div class="skill-row">
+          <div class="skill-label">ai / llm</div>
+          <div class="skill-items">LLM APIs · prompt design · document &amp; data extraction · MCP · n8n</div>
+        </div>
+        <div class="skill-row">
+          <div class="skill-label">learning</div>
+          <div class="skill-items">Python · RAG &amp; embeddings · vector databases</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="contact">
+    <div class="wrap">
+      <div class="sec-head reveal"><span class="sec-idx">03</span><span class="sec-title">Contact</span></div>
+      <div class="contact-grid reveal">
+        <a class="contact-card" href="mailto:nareg.marash@gmail.com">
+          <div class="k">email</div>
+          <div class="v">nareg.marash@gmail.com</div>
+        </a>
+        <a class="contact-card" href="https://github.com/Nareg-16" target="_blank" rel="noopener">
+          <div class="k">github</div>
+          <div class="v">github.com/Nareg-16</div>
+        </a>
+        <div class="contact-card">
+          <div class="k">based in</div>
+          <div class="v">Yerevan, Armenia</div>
+        </div>
+      </div>
+      <p class="nowline reveal">// now — <b>learning Python &amp; RAG.</b> next build: a tool that turns any document into a study quiz app.</p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap foot-inner">
+    <span>© 2026 Nareg Marashlian</span>
+    <span>built &amp; shipped by hand · Yerevan</span>
+  </div>
+</footer>
+
+<script>
+  (function(){
+    var els = document.querySelectorAll('.reveal');
+    if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('in');});return;}
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){ if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target);} });
+    },{threshold:.12});
+    els.forEach(function(e){io.observe(e);});
+  })();
+</script>
+</body>
+</html>
